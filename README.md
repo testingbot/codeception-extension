@@ -7,8 +7,8 @@ This way, you can see the test name, passed/failed state and more in the Testing
 Installation
 --------------
 
-+ Add the testingbot/codeception-extension composer package to the project's composer.json or run
-`composer require testingbot/codeception-extension`
++ Add the testingbot/codeception-extension composer package to the project's composer.json or
+run `composer require testingbot/codeception-extension`
 
 + Execute composer to update your environment.
 
@@ -68,7 +68,7 @@ env:
         \TestingBotWebDriver:
           capabilities:
             'name': 'single_test'
-```json
+```
 
 
 * The TestingBot `key` and `secret` are available in the [testingbot member area](https://testingbot.com/members/user/edit)
