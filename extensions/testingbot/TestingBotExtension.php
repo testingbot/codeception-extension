@@ -20,16 +20,16 @@ class TestingBotExtension extends \Codeception\Platform\Extension {
 	);
 
 	public function testFailed(\Codeception\Event\FailEvent $e) {
+		if (!array_key_exists("\TestingBotWebDriver", $current["modules"])) {
+			return;
+		}
+
 		$key = (getenv('TB_KEY') ? getenv('TB_KEY') : $this->config['key']);
 		$secret = (getenv('TB_KEY') ? getenv('TB_SECRET') : $this->config['secret']);
 
 		$api = new TestingBotAPI($key, $secret);
 
 		$current = $e->getTest()->getMetadata()->getCurrent();
-
-		if (!array_key_exists("\TestingBotWebDriver", $current["modules"])) {
-			return;
-		}
 
 		$sessionID = $current["modules"]["\TestingBotWebDriver"]->webDriver->getSessionID();
 
@@ -37,16 +37,16 @@ class TestingBotExtension extends \Codeception\Platform\Extension {
 	}
 
 	public function testSuccess(\Codeception\Event\TestEvent $e) {
+		if (!array_key_exists("\TestingBotWebDriver", $current["modules"])) {
+			return;
+		}
+
 		$key = (getenv('TB_KEY') ? getenv('TB_KEY') : $this->config['key']);
 		$secret = (getenv('TB_KEY') ? getenv('TB_SECRET') : $this->config['secret']);
 
 		$api = new TestingBotAPI($key, $secret);
 
 		$current = $e->getTest()->getMetadata()->getCurrent();
-
-		if (!array_key_exists("\TestingBotWebDriver", $current["modules"])) {
-			return;
-		}
 
 		$sessionID = $current["modules"]["\TestingBotWebDriver"]->webDriver->getSessionID();
 
