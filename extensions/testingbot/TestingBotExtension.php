@@ -31,9 +31,10 @@ class TestingBotExtension extends \Codeception\Platform\Extension {
 			return;
 		}
 
-		$sessionID = $current["modules"]["\TestingBotWebDriver"]->webDriver->getSessionID();
-
-		$api->updateJob($sessionID, array('success' => false, 'status_message' => $e->getFail()->getMessage(), 'name' => $e->getTest()->toString()));
+		if (!is_null($current["modules"]["\TestingBotWebDriver"]->webDriver)) {
+			$sessionID = $current["modules"]["\TestingBotWebDriver"]->webDriver->getSessionID();
+			$api->updateJob($sessionID, array('success' => false, 'status_message' => $e->getFail()->getMessage(), 'name' => $e->getTest()->toString()));
+		}
 	}
 
 	public function testSuccess(\Codeception\Event\TestEvent $e) {
