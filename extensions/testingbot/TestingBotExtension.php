@@ -27,12 +27,12 @@ class TestingBotExtension extends \Codeception\Platform\Extension {
 
 		$current = $e->getTest()->getMetadata()->getCurrent();
 
-		if (!array_key_exists("\TestingBotWebDriver", $current["modules"])) {
+		if (!array_key_exists("WebDriver", $current["modules"])) {
 			return;
 		}
 
-		if (!is_null($current["modules"]["\TestingBotWebDriver"]->webDriver)) {
-			$sessionID = $current["modules"]["\TestingBotWebDriver"]->webDriver->getSessionID();
+		if (!is_null($current["modules"]["WebDriver"]->webDriver)) {
+			$sessionID = $current["modules"]["WebDriver"]->webDriver->getSessionID();
 			$api->updateJob($sessionID, array('success' => false, 'status_message' => $e->getFail()->getMessage(), 'name' => $e->getTest()->toString()));
 		}
 	}
@@ -45,11 +45,11 @@ class TestingBotExtension extends \Codeception\Platform\Extension {
 
 		$current = $e->getTest()->getMetadata()->getCurrent();
 		
-		if (!array_key_exists("\TestingBotWebDriver", $current["modules"])) {
+		if (!array_key_exists("WebDriver", $current["modules"])) {
 			return;
 		}
 
-		$sessionID = $current["modules"]["\TestingBotWebDriver"]->webDriver->getSessionID();
+		$sessionID = $current["modules"]["WebDriver"]->webDriver->getSessionID();
 
 		$api->updateJob($sessionID, array('success' => true, 'name' => $e->getTest()->toString()));
 	}
