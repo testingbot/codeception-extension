@@ -1,5 +1,5 @@
 Codeception: TestingBot Extension
-============================
+==================================
 
 This is a CodeCeption extension that will send test meta-data back to TestingBot.
 This way, you can see the test name, passed/failed state and more in the TestingBot dashboard overview.
@@ -34,13 +34,6 @@ extensions:
         Codeception\Extension\TestingBotExtension:
             key: "KEY"
             secret: "SECRET"
-modules:
-    config:
-        Db:
-            dsn: ''
-            user: ''
-            password: ''
-            dump: tests/_data/dump.sql
 
 ````
 
@@ -49,9 +42,9 @@ modules:
 ```json
 modules:
   enabled:
-    - \TestingBotWebDriver
+    - WebDriver
   config:
-    \TestingBotWebDriver:
+    WebDriver:
       host: 'hub.testingbot.com'
       port: 80
       browser: chrome
@@ -65,7 +58,7 @@ env:
   single:
     modules:
       config:
-        \TestingBotWebDriver:
+        WebDriver:
           capabilities:
             'name': 'single_test'
 ```
